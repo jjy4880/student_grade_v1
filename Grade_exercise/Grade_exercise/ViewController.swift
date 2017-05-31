@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
     
         super.viewDidLoad()
-        var resultString: String = "성적결과표\n"
+        var outputString: String = "성적결과표\n"
        //var avg: Double = 0.0
         var studentArray: Array<Student> = Array()
         let jsondata = jsonTocode()
@@ -25,18 +25,18 @@ class ViewController: UIViewController {
         // student list check
         //print(studentArray.count)
         let totalavg = totalAvg(jsondata: studentArray)
-        resultString += "\n전체평균 : \(totalavg)\n\n"
-        resultString += "개인별 학점\n"
+        outputString += "\n전체평균 : \(totalavg)\n\n"
+        outputString += "개인별 학점\n"
         
-        resultString += studentGrade(jsondata: studentArray)
-        resultString += "\n\n수료생\n"
+        outputString += studentGrade(jsondata: studentArray)
+        outputString += "\n\n수료생\n"
         
     
     
         
         
-        resultString += passedList(jsondata: studentArray)
-        print(resultString)
+        outputString += passedList(jsondata: studentArray)
+        print(outputString)
     }
     
     func jsonTocode() -> Array<[String: AnyObject]>? {
@@ -245,7 +245,7 @@ struct Student{
 }
 /*
 
-        writeFileFromString(fileName: "result.txt", directory: homeDirectory, data: resultString)
+        writeFileFromString(fileName: "result.txt", directory: homeDirectory, data: outputString)
     }
     
     static func writeFileFromString(fileName:String,directory:String,data:String){
