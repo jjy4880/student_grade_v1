@@ -11,14 +11,13 @@ class Main {
 		let jsondata = jsonToCode()
 		
 		convertStudentObject(jsondata: jsondata, studentList: &studentArray)
-		let totalavg = totalAvg(jsondata: studentArray)	
-		print(totalavg)
+		let totalavg = totalAvg(jsondata: studentArray)
 		outputString += "전체 평균 : \(totalavg)\n\n개인별 학점\n"	
 		outputString += personalGrade(jsondata: studentArray)	
 		outputString += "\n수료생\n"	
 		outputString += passedList(jsondata: studentArray)
-		print(outputString)	
-	
+		print(outputString)
+        print("\n\n======================== Finish =========================\n\n")
 		outputStringWritetoFile(str: outputString)		
 	}
 	
@@ -39,7 +38,7 @@ class Main {
 	// students.json bring to .swift
 	static func jsonToCode() -> Array<[String: AnyObject]>? {
 		let homeDirectory = NSHomeDirectory()
-		print(homeDirectory) 
+		 
 		let file =  "\(homeDirectory)/students.json"
 
 		let path = URL(fileURLWithPath: file)
@@ -122,9 +121,9 @@ class Main {
 
 			switch student.name!.characters.count {
 				case 4:
-					str += "\(student.name!)       :\(student.getGrade(average: student.average!))\n"
+					str += "\(student.name!)       : \(student.getGrade(average: student.average!))\n"
 				case 5:
-					str += "\(student.name!)      :\(student.getGrade(average: student.average!))\n"
+					str += "\(student.name!)      : \(student.getGrade(average: student.average!))\n"
 
 				default:
 					print("name count is not 4,5")
@@ -195,32 +194,32 @@ class Student {
             totalGrade += num
             count += 1
         } else {
-            print("\(self.name!) = Not taken database")
+            //print("\(self.name!) = Not taken database")
         }
         
         if let num = algorithm{
             totalGrade += num
             count += 1
         } else {
-            print("\(self.name!) = Not taken algorithm")
+            //print("\(self.name!) = Not taken algorithm")
         }
         if let num = operating_system{
             totalGrade += num
             count += 1
         } else {
-            print("\(self.name!) = Not taken operating_system")
+            //print("\(self.name!) = Not taken operating_system")
         }
         if let num = networking{
             totalGrade += num
             count += 1
         } else {
-            print("\(self.name!) = Not taken networking")
+           // print("\(self.name!) = Not taken networking")
         }
         if let num = data_structure{
             totalGrade += num
             count += 1
         } else {
-            print("\(self.name!) = Not taken data_structure")
+            //print("\(self.name!) = Not taken data_structure")
         }
     
         average = Double(totalGrade) / Double(count)     // setGrade(average:Double)
