@@ -3,7 +3,7 @@ import Foundation
 
 class Main {
 	
-	static func start(){
+	 func start(){
 		var outputString: String = "성적결과표\n\n"
 		var studentArray: Array<Student> = Array() 
 	
@@ -21,7 +21,7 @@ class Main {
 		outputStringWritetoFile(str: outputString)		
 	}
 	
-	static func outputStringWritetoFile(str: String){
+	 func outputStringWritetoFile(str: String){
 		let homeDirectory = NSHomeDirectory()
 		let fileName = "result.txt"
 		let path = URL(fileURLWithPath: "\(homeDirectory)/\(fileName)")
@@ -36,7 +36,7 @@ class Main {
 
 
 	// students.json bring to .swift
-	static func jsonToCode() -> Array<[String: AnyObject]>? {
+	  func jsonToCode() -> Array<[String: AnyObject]>? {
 		let homeDirectory = NSHomeDirectory()
 		 
 		let file =  "\(homeDirectory)/students.json"
@@ -55,7 +55,7 @@ class Main {
 	
 
 	//students.json -> Student Class object , type dict
-	static func convertStudentObject(jsondata: Array<[String: AnyObject]>? , studentList: inout Array<Student>){
+        func convertStudentObject(jsondata: Array<[String: AnyObject]>? , studentList: inout Array<Student>){
 										// inout -> for call by reference
 		guard let jsondata2 = jsondata else {
 			print("json is empty")
@@ -84,7 +84,7 @@ class Main {
 	
 	
 
-	static func roundCheck(number: Double, size: Int) -> Double {
+	 func roundCheck(number: Double, size: Int) -> Double {
 		let div = pow(10.0, Double(size))
 		return round( number * div ) / div
 
@@ -92,7 +92,7 @@ class Main {
 
 
 
-	static func totalAvg(jsondata: Array<Student>) -> Double {
+	 func totalAvg(jsondata: Array<Student>) -> Double {
 		let stArray = jsondata
 		var avg: Double = 0.0
 
@@ -107,7 +107,7 @@ class Main {
 		
 	} //end of totalAvg 
 
-	static func personalGrade(jsondata: Array<Student>) -> String {
+	 func personalGrade(jsondata: Array<Student>) -> String {
 		
 		//namesort
 		let nameArray = jsondata.sorted{
@@ -133,7 +133,7 @@ class Main {
 
 	} //end of personalGrade	
 
-	static func passedList(jsondata: Array<Student>) -> String {
+	 func passedList(jsondata: Array<Student>) -> String {
 	
 		var str: String = ""
 		let stArray = jsondata
@@ -250,8 +250,11 @@ class Student {
 	} //end of Passed
 } //end of class_student
 
-Main.start()
 
+//== print __ result
+
+let result: Main = Main()
+result.start()
 
 
 
